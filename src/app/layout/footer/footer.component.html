@@ -1,0 +1,84 @@
+@let c = content();
+<footer class="footer">
+  <div class="container grid">
+    <div class="about">
+      <a routerLink="/" class="brand">
+        <img [src]="config.logoPath" alt="" width="44" height="44" loading="lazy" />
+        <span>{{ config.businessName }}</span>
+      </a>
+      <p>{{ c.footer.description }}</p>
+      @if (config.social.length) {
+        <p class="social-title">{{ c.footer.followUs }}</p>
+        <ul class="social">
+          @for (link of config.social; track link.url) {
+            <li>
+              <a [href]="link.url" target="_blank" rel="noopener">
+                {{ link.label }}<span class="visually-hidden"> {{ c.common.opensInNewTab }}</span>
+              </a>
+            </li>
+          }
+        </ul>
+      }
+    </div>
+
+    <nav [attr.aria-label]="c.footer.quickLinksTitle">
+      <h2>{{ c.footer.quickLinksTitle }}</h2>
+      <ul>
+        @for (item of c.nav.items; track item.id) {
+          <li><a routerLink="/" [fragment]="item.id">{{ item.label }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <nav [attr.aria-label]="c.footer.servicesTitle">
+      <h2>{{ c.footer.servicesTitle }}</h2>
+      <ul>
+        @for (service of c.services.items; track service.id) {
+          <li><a routerLink="/" [fragment]="'service-' + service.id">{{ service.title }}</a></li>
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <h2>{{ c.footer.contactTitle }}</h2>
+      <ul class="contact">
+        <li>
+          <app-icon name="map-pin" [size]="18" />
+          <span>{{ config.location.locality }}, {{ config.location.region }} – {{ config.location.postalCode }}, {{ config.location.state }}, {{ config.location.country }}</span>
+        </li>
+        <li>
+          <app-icon name="phone" [size]="18" />
+          @if (tel) {
+            <a [href]="tel">{{ config.phone.display }}</a>
+          } @else {
+            <span>{{ config.phone.display }}</span>
+          }
+        </li>
+        <li>
+          <app-icon name="mail" [size]="18" />
+          <a [href]="mail">{{ config.email.primary }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container bottom">
+    <p>© {{ year }} {{ config.businessName }}. {{ c.footer.rights }}</p>
+    <ul class="legal">
+      <li><a routerLink="/privacy-policy">{{ c.footer.privacy }}</a></li>
+      @if (config.hasTermsPage) {
+        <li><a routerLink="/terms">{{ c.footer.terms }}</a></li>
+      }
+      <li>
+        @if (theme.preference() === 'system') {
+          <span class="muted">{{ c.theme.followingSystem }}</span>
+        } @else {
+          <button type="button" class="link-btn" (click)="theme.setPreference('system')">
+            <app-icon name="monitor" [size]="16" />
+            {{ c.theme.useSystem }}
+          </button>
+        }
+      </li>
+    </ul>
+  </div>
+</footer>

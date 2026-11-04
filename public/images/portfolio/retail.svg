@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="750" fill="#fbf7f2"/>
+  <rect width="1200" height="64" fill="#2a1438"/>
+  <text x="40" y="42" fill="#f3c76b" font-size="24" font-weight="800" letter-spacing="2">DEMO SILKS &amp; JEWELS</text>
+  <g fill="#cbb7d8"><rect x="640" y="27" width="70" height="10" rx="5"/><rect x="730" y="27" width="70" height="10" rx="5"/><rect x="820" y="27" width="70" height="10" rx="5"/></g>
+  <rect x="1010" y="16" width="150" height="32" rx="16" fill="#f3c76b"/>
+  <rect x="40" y="90" width="1120" height="200" rx="22" fill="#5b2a7a"/>
+  <circle cx="1040" cy="190" r="120" fill="#7a3ea0"/>
+  <circle cx="930" cy="150" r="60" fill="#f3c76b" opacity=".35"/>
+  <text x="84" y="170" fill="#ffffff" font-size="42" font-weight="800">New Festive Collection</text>
+  <text x="84" y="210" fill="#e8d7f2" font-size="22">Sample catalogue website · Demo products</text>
+  <rect x="84" y="230" width="190" height="44" rx="22" fill="#f3c76b"/>
+  <text x="179" y="259" fill="#2a1438" font-size="18" font-weight="700" text-anchor="middle">Browse Catalogue</text>
+  <g font-size="18" font-weight="700" fill="#2a1438">
+    <rect x="40" y="316" width="140" height="40" rx="20" fill="#2a1438"/><text x="110" y="342" fill="#ffffff" text-anchor="middle">Sarees</text>
+    <rect x="196" y="316" width="140" height="40" rx="20" fill="#ffffff" stroke="#e5d9ea"/><text x="266" y="342" text-anchor="middle">Kurtas</text>
+    <rect x="352" y="316" width="140" height="40" rx="20" fill="#ffffff" stroke="#e5d9ea"/><text x="422" y="342" text-anchor="middle">Jewellery</text>
+    <rect x="508" y="316" width="140" height="40" rx="20" fill="#ffffff" stroke="#e5d9ea"/><text x="578" y="342" text-anchor="middle">Kids</text>
+  </g>
+  <g font-size="18">
+    <g transform="translate(40 380)"><rect width="262" height="340" rx="16" fill="#ffffff" stroke="#e5d9ea"/><rect x="14" y="14" width="234" height="190" rx="10" fill="#f1e4f7"/><path d="M90 60h80l20 120h-120z" fill="#b076cf"/><text x="20" y="240" fill="#2a1438" font-weight="700">Silk Saree (Demo)</text><text x="20" y="266" fill="#7d6b88">Sample product</text><rect x="20" y="284" width="222" height="40" rx="20" fill="#25d366"/><text x="131" y="310" fill="#fff" font-weight="700" text-anchor="middle">Enquire on WhatsApp</text></g>
+    <g transform="translate(320 380)"><rect width="262" height="340" rx="16" fill="#ffffff" stroke="#e5d9ea"/><rect x="14" y="14" width="234" height="190" rx="10" fill="#fdf0d8"/><circle cx="131" cy="110" r="50" fill="none" stroke="#d9a23a" stroke-width="10"/><text x="20" y="240" fill="#2a1438" font-weight="700">Necklace Set (Demo)</text><text x="20" y="266" fill="#7d6b88">Sample product</text><rect x="20" y="284" width="222" height="40" rx="20" fill="#25d366"/><text x="131" y="310" fill="#fff" font-weight="700" text-anchor="middle">Enquire on WhatsApp</text></g>
+    <g transform="translate(600 380)"><rect width="262" height="340" rx="16" fill="#ffffff" stroke="#e5d9ea"/><rect x="14" y="14" width="234" height="190" rx="10" fill="#e3eefc"/><path d="M100 50h62l18 30-14 10v84h-70v-84l-14-10z" fill="#5c86d6"/><text x="20" y="240" fill="#2a1438" font-weight="700">Cotton Kurta (Demo)</text><text x="20" y="266" fill="#7d6b88">Sample product</text><rect x="20" y="284" width="222" height="40" rx="20" fill="#25d366"/><text x="131" y="310" fill="#fff" font-weight="700" text-anchor="middle">Enquire on WhatsApp</text></g>
+    <g transform="translate(880 380)"><rect width="280" height="340" rx="16" fill="#2a1438"/><text x="28" y="56" fill="#f3c76b" font-size="22" font-weight="800">Visit Our Store</text><rect x="28" y="80" width="224" height="12" rx="6" fill="#4a2b5e"/><rect x="28" y="104" width="180" height="12" rx="6" fill="#4a2b5e"/><rect x="28" y="150" width="224" height="110" rx="12" fill="#3b2050"/><rect x="28" y="276" width="224" height="40" rx="20" fill="#f3c76b"/><text x="140" y="302" fill="#2a1438" font-weight="700" text-anchor="middle">Get Directions</text></g>
+  </g>
+</svg>

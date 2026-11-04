@@ -1,0 +1,267 @@
+@let c = content().contact;
+@let f = c.form;
+@let common = content().common;
+<section id="contact" class="section section--alt" aria-labelledby="contact-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="eyebrow">{{ c.eyebrow }}</p>
+      <h2 id="contact-title">{{ c.title }}</h2>
+      <p>{{ c.text }}</p>
+    </header>
+
+    <div class="grid">
+      <!-- Direct contact details -->
+      <aside class="card details" aria-labelledby="details-title">
+        <h3 id="details-title">{{ c.detailsTitle }}</h3>
+        <dl>
+          <div>
+            <dt>{{ c.labels.company }}</dt>
+            <dd>{{ config.businessName }}</dd>
+          </div>
+          <div>
+            <dt>{{ c.labels.founder }}</dt>
+            <dd>{{ config.founder.name }}</dd>
+          </div>
+          <div>
+            <dt><app-icon name="map-pin" [size]="16" />{{ c.labels.location }}</dt>
+            <dd>
+              @if (config.location.streetAddress) {
+                {{ config.location.streetAddress }},
+              }
+              {{ config.location.locality }}, {{ config.location.region }} – {{ config.location.postalCode }},
+              {{ config.location.state }}, {{ config.location.country }}
+            </dd>
+          </div>
+          <div>
+            <dt><app-icon name="phone" [size]="16" />{{ c.labels.phone }}</dt>
+            <dd>
+              @if (tel) {
+                <a [href]="tel">{{ config.phone.display }}</a>
+              } @else {
+                {{ config.phone.display }}
+              }
+            </dd>
+          </div>
+          <div>
+            <dt><app-icon name="mail" [size]="16" />{{ c.labels.email }}</dt>
+            <dd><a [href]="mail">{{ config.email.primary }}</a></dd>
+          </div>
+          <div>
+            <dt><app-icon name="mail" [size]="16" />{{ c.labels.altEmail }}</dt>
+            <dd><a [href]="altMail">{{ config.email.alternative }}</a></dd>
+          </div>
+          @if (config.businessHours) {
+            <div>
+              <dt>{{ c.labels.hours }}</dt>
+              <dd>{{ config.businessHours }}</dd>
+            </div>
+          }
+        </dl>
+        <div class="detail-ctas">
+          <a class="btn btn--whatsapp" [href]="whatsappGreeting" target="_blank" rel="noopener">
+            <app-icon name="whatsapp" [size]="20" />
+            {{ c.whatsappCta }}
+            <span class="visually-hidden">{{ common.opensInNewTab }}</span>
+          </a>
+          @if (tel) {
+            <a class="btn btn--outline" [href]="tel">
+              <app-icon name="phone" [size]="18" />
+              {{ c.callCta }}
+            </a>
+          }
+        </div>
+      </aside>
+
+      <!-- Enquiry form -->
+      <div class="card form-card" #formCard>
+        @switch (status()) {
+          @case ('success') {
+            <div class="result result--success" role="status" tabindex="-1">
+              <app-icon name="circle-check" [size]="40" />
+              <h3>{{ f.successTitle }}</h3>
+              <p>{{ f.successText }}</p>
+              <button type="button" class="btn btn--outline" (click)="startOver()">{{ f.sendAnother }}</button>
+            </div>
+          }
+          @case ('demo') {
+            <div class="result result--demo" role="alert">
+              <app-icon name="info" [size]="40" />
+              <h3>{{ f.demoResultTitle }}</h3>
+              <p>{{ f.demoResultText }}</p>
+              <div class="result-actions">
+                <a class="btn btn--whatsapp" [href]="demoWhatsappUrl()" target="_blank" rel="noopener">
+                  <app-icon name="whatsapp" [size]="20" />
+                  {{ f.sendViaWhatsapp }}
+                  <span class="visually-hidden">{{ common.opensInNewTab }}</span>
+                </a>
+                <button type="button" class="btn btn--ghost" (click)="status.set('idle')">← {{ f.title }}</button>
+              </div>
+            </div>
+          }
+          @default {
+            <h3>{{ f.title }}</h3>
+
+            @if (isDemo) {
+              <p class="banner banner--demo"><app-icon name="info" [size]="18" />{{ f.demoNotice }}</p>
+            }
+            @if (status() === 'error') {
+              <div class="banner banner--error" role="alert">
+                <app-icon name="circle-alert" [size]="18" />
+                <div>
+                  <strong>{{ f.failureTitle }}</strong>
+                  <span>{{ f.failureText }}</span>
+                </div>
+              </div>
+            }
+            @if (submitted() && form.invalid) {
+              <p class="banner banner--error" role="alert">
+                <app-icon name="circle-alert" [size]="18" />{{ f.errorSummary }}
+              </p>
+            }
+
+            <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+              <div class="field">
+                <label for="cf-name">{{ f.name }} <span aria-hidden="true">*</span></label>
+                <input
+                  id="cf-name"
+                  type="text"
+                  formControlName="name"
+                  autocomplete="name"
+                  maxlength="80"
+                  required
+                  [attr.aria-invalid]="showError('name')"
+                  [attr.aria-describedby]="showError('name') ? 'cf-name-error' : null"
+                />
+                @if (showError('name')) {
+                  <p class="error" id="cf-name-error">
+                    <app-icon name="circle-alert" [size]="16" />
+                    {{ form.controls.name.hasError('required') ? f.errors.nameRequired : f.errors.nameLength }}
+                  </p>
+                }
+              </div>
+
+              <div class="field">
+                <label for="cf-phone">{{ f.phone }} <span aria-hidden="true">*</span></label>
+                <input
+                  id="cf-phone"
+                  type="tel"
+                  inputmode="tel"
+                  formControlName="phone"
+                  autocomplete="tel"
+                  maxlength="16"
+                  required
+                  [attr.aria-invalid]="showError('phone')"
+                  [attr.aria-describedby]="showError('phone') ? 'cf-phone-hint cf-phone-error' : 'cf-phone-hint'"
+                />
+                <p class="hint" id="cf-phone-hint">{{ f.phoneHint }}</p>
+                @if (showError('phone')) {
+                  <p class="error" id="cf-phone-error">
+                    <app-icon name="circle-alert" [size]="16" />
+                    {{ form.controls.phone.hasError('required') ? f.errors.phoneRequired : f.errors.phoneInvalid }}
+                  </p>
+                }
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label for="cf-business">{{ f.businessType }} <span aria-hidden="true">*</span></label>
+                  <select
+                    id="cf-business"
+                    formControlName="businessType"
+                    required
+                    [attr.aria-invalid]="showError('businessType')"
+                    [attr.aria-describedby]="showError('businessType') ? 'cf-business-error' : null"
+                  >
+                    <option value="" disabled>{{ f.selectPlaceholder }}</option>
+                    @for (option of f.businessTypes; track option.value) {
+                      <option [value]="option.value">{{ option.label }}</option>
+                    }
+                  </select>
+                  @if (showError('businessType')) {
+                    <p class="error" id="cf-business-error">
+                      <app-icon name="circle-alert" [size]="16" />{{ f.errors.businessTypeRequired }}
+                    </p>
+                  }
+                </div>
+
+                <div class="field">
+                  <label for="cf-service">{{ f.serviceNeeded }} <span aria-hidden="true">*</span></label>
+                  <select
+                    id="cf-service"
+                    formControlName="serviceNeeded"
+                    required
+                    [attr.aria-invalid]="showError('serviceNeeded')"
+                    [attr.aria-describedby]="showError('serviceNeeded') ? 'cf-service-error' : null"
+                  >
+                    <option value="" disabled>{{ f.selectPlaceholder }}</option>
+                    @for (option of serviceOptions(); track option.value) {
+                      <option [value]="option.value">{{ option.label }}</option>
+                    }
+                  </select>
+                  @if (showError('serviceNeeded')) {
+                    <p class="error" id="cf-service-error">
+                      <app-icon name="circle-alert" [size]="16" />{{ f.errors.serviceRequired }}
+                    </p>
+                  }
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="cf-message">{{ f.message }} <span class="optional">{{ f.optional }}</span></label>
+                <textarea
+                  id="cf-message"
+                  rows="4"
+                  formControlName="message"
+                  maxlength="1000"
+                  [attr.aria-invalid]="showError('message')"
+                  [attr.aria-describedby]="showError('message') ? 'cf-message-error' : null"
+                ></textarea>
+                @if (showError('message')) {
+                  <p class="error" id="cf-message-error">
+                    <app-icon name="circle-alert" [size]="16" />{{ f.errors.messageLength }}
+                  </p>
+                }
+              </div>
+
+              <!-- Honeypot: hidden from people, often filled in by spam bots. -->
+              <div class="hp" aria-hidden="true">
+                <label for="cf-website">Website</label>
+                <input id="cf-website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="field consent">
+                <input
+                  id="cf-consent"
+                  type="checkbox"
+                  formControlName="consent"
+                  required
+                  [attr.aria-invalid]="showError('consent')"
+                  [attr.aria-describedby]="showError('consent') ? 'cf-consent-error' : null"
+                />
+                <label for="cf-consent">
+                  {{ f.consent }}
+                  <a routerLink="/privacy-policy">{{ f.privacyLink }}</a>.
+                </label>
+                @if (showError('consent')) {
+                  <p class="error" id="cf-consent-error">
+                    <app-icon name="circle-alert" [size]="16" />{{ f.errors.consentRequired }}
+                  </p>
+                }
+              </div>
+
+              <button type="submit" class="btn btn--accent btn--block" [disabled]="status() === 'submitting'">
+                @if (status() === 'submitting') {
+                  <app-icon class="spin" name="loader" [size]="20" />
+                  {{ f.submitting }}
+                } @else {
+                  <app-icon name="send" [size]="18" />
+                  {{ f.submit }}
+                }
+              </button>
+            </form>
+          }
+        }
+      </div>
+    </div>
+  </div>
+</section>

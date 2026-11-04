@@ -1,0 +1,72 @@
+@let c = content();
+<header class="header" [class.header--scrolled]="scrolled() || menuOpen()">
+  <div class="container bar">
+    <a routerLink="/" class="brand" [attr.aria-label]="c.nav.homeLabel" (click)="closeMenu()">
+      <img [src]="config.logoPath" alt="" width="40" height="40" />
+      <span class="brand-text">
+        <strong>Yashasvi</strong>
+        <span>Digital Solutions</span>
+      </span>
+    </a>
+
+    <nav class="desktop-nav" [attr.aria-label]="c.nav.label">
+      <ul>
+        @for (item of c.nav.items; track item.id) {
+          <li>
+            <a
+              routerLink="/"
+              [fragment]="item.id"
+              [class.active]="activeSection() === item.id"
+              [attr.aria-current]="activeSection() === item.id ? 'location' : null"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <app-language-switcher class="hide-mobile" />
+      <app-theme-toggle />
+      <a class="btn btn--accent btn--sm cta hide-mobile" [href]="auditUrl" target="_blank" rel="noopener">
+        <app-icon name="whatsapp" [size]="18" />
+        {{ c.nav.cta }}
+        <span class="visually-hidden">{{ c.common.opensInNewTab }}</span>
+      </a>
+      <button
+        type="button"
+        class="menu-btn"
+        aria-controls="mobile-menu"
+        [attr.aria-expanded]="menuOpen()"
+        [attr.aria-label]="menuOpen() ? c.nav.closeMenu : c.nav.openMenu"
+        (click)="toggleMenu()"
+      >
+        <app-icon [name]="menuOpen() ? 'x' : 'menu'" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu" [class.open]="menuOpen()" [attr.inert]="menuOpen() ? null : ''">
+    <nav class="container" [attr.aria-label]="c.nav.label">
+      <ul>
+        @for (item of c.nav.items; track item.id) {
+          <li>
+            <a
+              routerLink="/"
+              [fragment]="item.id"
+              [attr.aria-current]="activeSection() === item.id ? 'location' : null"
+              (click)="closeMenu()"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+      <app-language-switcher />
+      <a class="btn btn--accent btn--block" [href]="auditUrl" target="_blank" rel="noopener" (click)="closeMenu()">
+        <app-icon name="whatsapp" [size]="20" />
+        {{ c.hero.primaryCta }}
+        <span class="visually-hidden">{{ c.common.opensInNewTab }}</span>
+      </a>
+    </nav>
+  </div>
+</header>

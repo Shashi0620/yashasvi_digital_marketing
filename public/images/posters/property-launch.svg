@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="400" height="500" fill="#0e5a43"/>
+  <circle cx="340" cy="70" r="120" fill="#137355"/>
+  <circle cx="340" cy="70" r="40" fill="#e0a526"/>
+  <path d="M0 360 Q120 300 220 340 T400 320 V500 H0Z" fill="#137355"/>
+  <g fill="#1b8a66"><rect x="220" y="230" width="60" height="110" rx="4"/><rect x="290" y="200" width="70" height="140" rx="4"/></g>
+  <text x="32" y="110" fill="#e0a526" font-size="16" font-weight="700" letter-spacing="3">NOW LAUNCHING</text>
+  <text x="32" y="156" fill="#ffffff" font-size="38" font-weight="800">Your Layout</text>
+  <text x="32" y="198" fill="#ffffff" font-size="38" font-weight="800">Name Here</text>
+  <text x="32" y="232" fill="#d6efe4" font-size="16">Plots near your location</text>
+  <rect x="32" y="410" width="180" height="48" rx="24" fill="#e0a526"/>
+  <text x="122" y="440" fill="#1a1300" font-size="17" font-weight="800" text-anchor="middle">Enquire Now</text>
+  <text x="368" y="480" fill="#d6efe4" font-size="11" text-anchor="end">CONCEPT DESIGN</text>
+</svg>

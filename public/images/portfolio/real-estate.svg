@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1200" height="750" fill="#f6f8fb"/>
+  <rect width="1200" height="64" fill="#ffffff"/>
+  <rect x="40" y="22" width="150" height="20" rx="10" fill="#0e5a43"/>
+  <g fill="#7a8699"><rect x="640" y="27" width="70" height="10" rx="5"/><rect x="730" y="27" width="70" height="10" rx="5"/><rect x="820" y="27" width="70" height="10" rx="5"/></g>
+  <rect x="1010" y="16" width="150" height="32" rx="16" fill="#e0a526"/>
+  <rect y="64" width="1200" height="330" fill="#0e5a43"/>
+  <path d="M0 394 L0 300 Q300 230 600 290 T1200 260 L1200 394Z" fill="#137355"/>
+  <g fill="#1b8a66"><rect x="760" y="170" width="90" height="140" rx="6"/><rect x="870" y="130" width="110" height="180" rx="6"/><rect x="1000" y="190" width="80" height="120" rx="6"/></g>
+  <g fill="#e9f5ef" opacity=".55"><rect x="780" y="190" width="20" height="20"/><rect x="815" y="190" width="20" height="20"/><rect x="890" y="150" width="20" height="20"/><rect x="930" y="150" width="20" height="20"/><rect x="890" y="190" width="20" height="20"/><rect x="930" y="190" width="20" height="20"/></g>
+  <text x="80" y="170" fill="#ffffff" font-size="44" font-weight="800">Green Meadows Layout</text>
+  <text x="80" y="214" fill="#d6efe4" font-size="22">Sample plotted development · Demo content</text>
+  <rect x="80" y="250" width="200" height="52" rx="26" fill="#e0a526"/>
+  <text x="180" y="283" fill="#1a1300" font-size="20" font-weight="700" text-anchor="middle">Enquire Now</text>
+  <rect x="300" y="250" width="200" height="52" rx="26" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <text x="400" y="283" fill="#ffffff" font-size="20" font-weight="700" text-anchor="middle">View Location</text>
+  <text x="80" y="450" fill="#0f1b33" font-size="28" font-weight="800">Available Plots</text>
+  <g font-size="18">
+    <g transform="translate(80 480)"><rect width="250" height="220" rx="16" fill="#ffffff" stroke="#dde3ee"/><rect x="16" y="16" width="218" height="100" rx="10" fill="#dff1e8"/><text x="20" y="150" fill="#0f1b33" font-weight="700">30 × 40 Plot</text><text x="20" y="178" fill="#6b778c">East facing · Sample</text><rect x="20" y="190" width="90" height="16" rx="8" fill="#e0a526"/></g>
+    <g transform="translate(350 480)"><rect width="250" height="220" rx="16" fill="#ffffff" stroke="#dde3ee"/><rect x="16" y="16" width="218" height="100" rx="10" fill="#dff1e8"/><text x="20" y="150" fill="#0f1b33" font-weight="700">40 × 60 Plot</text><text x="20" y="178" fill="#6b778c">Corner plot · Sample</text><rect x="20" y="190" width="90" height="16" rx="8" fill="#e0a526"/></g>
+    <g transform="translate(620 480)"><rect width="250" height="220" rx="16" fill="#ffffff" stroke="#dde3ee"/><rect x="16" y="16" width="218" height="100" rx="10" fill="#dff1e8"/><text x="20" y="150" fill="#0f1b33" font-weight="700">30 × 50 Plot</text><text x="20" y="178" fill="#6b778c">Park facing · Sample</text><rect x="20" y="190" width="90" height="16" rx="8" fill="#e0a526"/></g>
+    <g transform="translate(890 430)"><rect width="250" height="270" rx="16" fill="#0f1b33"/><text x="24" y="50" fill="#ffffff" font-size="22" font-weight="800">Book a Site Visit</text><rect x="24" y="74" width="202" height="40" rx="8" fill="#26344f"/><rect x="24" y="126" width="202" height="40" rx="8" fill="#26344f"/><rect x="24" y="190" width="202" height="48" rx="24" fill="#25d366"/><text x="125" y="221" fill="#ffffff" font-weight="700" text-anchor="middle">WhatsApp Us</text></g>
+  </g>
+</svg>

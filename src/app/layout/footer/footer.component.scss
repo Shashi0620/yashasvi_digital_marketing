@@ -1,0 +1,130 @@
+.footer {
+  padding-top: clamp(48px, 7vw, 80px);
+  // Leaves room so the floating WhatsApp button never covers footer links.
+  padding-bottom: 88px;
+  background: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  color: var(--c-muted);
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1.4fr 0.8fr 1.2fr 1.2fr;
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--c-text);
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+h2 {
+  margin-bottom: 14px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+a {
+  color: var(--c-muted);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--c-link);
+    text-decoration: underline;
+  }
+}
+
+.contact li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+
+  app-icon {
+    margin-top: 3px;
+    color: var(--c-link);
+  }
+
+  a,
+  span {
+    overflow-wrap: anywhere;
+  }
+}
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.social-title {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--c-text);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--c-border);
+
+  p {
+    margin: 0;
+  }
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--c-muted);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--c-link);
+    text-decoration: underline;
+  }
+}
+
+.muted {
+  font-size: 0.875rem;
+}

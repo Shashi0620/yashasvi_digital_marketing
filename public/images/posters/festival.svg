@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="#4a1030"/>
+  <circle cx="200" cy="210" r="170" fill="url(#glow)" opacity=".45"/>
+  <g fill="none" stroke="#f3c76b" stroke-width="2" opacity=".6">
+    <circle cx="200" cy="210" r="120"/><circle cx="200" cy="210" r="96" stroke-dasharray="4 8"/>
+  </g>
+  <path d="M200 150c14 18 18 34 0 52-18-18-14-34 0-52Z" fill="#ffb02e"/>
+  <path d="M200 166c6 8 8 16 0 24-8-8-6-16 0-24Z" fill="#fff1c1"/>
+  <path d="M140 222h120c-6 28-30 44-60 44s-54-16-60-44Z" fill="#d9822b"/>
+  <rect x="150" y="214" width="100" height="10" rx="5" fill="#f3c76b"/>
+  <text x="200" y="360" fill="#ffffff" font-size="32" font-weight="800" text-anchor="middle">Festival Greetings</text>
+  <text x="200" y="394" fill="#f3c76b" font-size="17" text-anchor="middle">Wishing you joy &amp; prosperity</text>
+  <rect x="110" y="424" width="180" height="2" fill="#f3c76b" opacity=".6"/>
+  <text x="200" y="452" fill="#ffffff" font-size="15" font-weight="700" text-anchor="middle">Your Business Name</text>
+  <text x="368" y="484" fill="#d9b3c6" font-size="11" text-anchor="end">CONCEPT DESIGN</text>
+</svg>

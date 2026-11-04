@@ -1,0 +1,61 @@
+@let c = content().portfolio;
+@let common = content().common;
+<section id="portfolio" class="section section--alt" aria-labelledby="portfolio-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="eyebrow">{{ c.eyebrow }}</p>
+      <h2 id="portfolio-title">{{ c.title }}</h2>
+      <p>{{ c.intro }}</p>
+    </header>
+
+    <ul class="projects">
+      @for (project of c.projects; track project.id) {
+        <li class="card project">
+          <div class="preview">
+            <img [src]="project.image" [alt]="project.imageAlt" width="1200" height="750" loading="lazy" decoding="async" />
+            <span class="badge">{{ common.demoBadge }}</span>
+          </div>
+          <div class="body">
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+            <ul class="check-list">
+              @for (feature of project.features; track feature) {
+                <li><app-icon name="check" [size]="16" [strokeWidth]="3" />{{ feature }}</li>
+              }
+            </ul>
+            @if (project.demoUrl) {
+              <a class="btn btn--primary btn--sm" [href]="project.demoUrl" target="_blank" rel="noopener">
+                {{ c.viewDemo }}
+                <app-icon name="external-link" [size]="16" />
+                <span class="visually-hidden">– {{ project.title }} {{ common.opensInNewTab }}</span>
+              </a>
+            } @else {
+              <span class="btn btn--outline btn--sm" aria-disabled="true">
+                {{ c.demoUnavailable }}
+              </span>
+            }
+          </div>
+        </li>
+      }
+    </ul>
+
+    <div class="posters-header">
+      <h3>{{ c.postersTitle }}</h3>
+      <p>{{ c.postersIntro }}</p>
+    </div>
+    <ul class="posters">
+      @for (poster of c.posters; track poster.id) {
+        <li class="poster">
+          <figure>
+            <img [src]="poster.image" [alt]="poster.imageAlt" width="400" height="500" loading="lazy" decoding="async" />
+            <figcaption>
+              <span>{{ poster.title }}</span>
+              <span class="badge">{{ common.conceptBadge }}</span>
+            </figcaption>
+          </figure>
+        </li>
+      }
+    </ul>
+    <p class="note centered">{{ c.note }}</p>
+  </div>
+</section>

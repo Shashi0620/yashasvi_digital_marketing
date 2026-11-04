@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Yashasvi Digital Solutions | Digital Marketing & Website Development in Hoskote</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f47c8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="author" content="Yashasvi Digital Solutions">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="images/logo.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <!-- Applies the saved / system theme before first paint to avoid a theme flash. -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('yds-theme');
+        var dark = saved === 'dark' || (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var root = document.documentElement;
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        root.style.colorScheme = dark ? 'dark' : 'light';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

@@ -1,0 +1,103 @@
+// Design tokens. Every colour in the UI comes from these variables, so themes are
+// maintained in one place. Contrast ratios target WCAG AA in both themes.
+
+@mixin light-theme {
+  --c-bg: #ffffff;
+  --c-surface: #f4f7fc;
+  --c-surface-2: #e9effa;
+  --c-card: #ffffff;
+  --c-text: #0f1b33;
+  --c-muted: #4a5568;
+  --c-border: #d9e1ee;
+
+  --c-primary: #1f47c8; // Royal blue — trust
+  --c-primary-hover: #17379c;
+  --c-primary-soft: #e6edff;
+  --c-on-primary: #ffffff;
+  --c-link: #1f47c8;
+
+  --c-accent: #f5a524; // Gold / orange — calls to action
+  --c-accent-hover: #e08e0b;
+  --c-accent-soft: #fff4de;
+  --c-on-accent: #1a1300;
+
+  --c-success: #12703c;
+  --c-success-soft: #e3f6ea;
+  --c-warning: #8a5300;
+  --c-warning-soft: #fff4de;
+  --c-danger: #b42318;
+  --c-danger-soft: #fdecea;
+
+  --c-hero-from: #eef3ff;
+  --c-hero-to: #ffffff;
+  --shadow-sm: 0 1px 2px rgb(15 27 51 / 6%), 0 1px 3px rgb(15 27 51 / 8%);
+  --shadow-md: 0 8px 24px rgb(15 27 51 / 10%);
+  --shadow-lg: 0 18px 48px rgb(31 71 200 / 16%);
+  color-scheme: light;
+}
+
+@mixin dark-theme {
+  --c-bg: #0b1220;
+  --c-surface: #101a2d;
+  --c-surface-2: #16223a;
+  --c-card: #131e33;
+  --c-text: #e8edf7;
+  --c-muted: #a9b5ca;
+  --c-border: #26344f;
+
+  --c-primary: #3d68f2;
+  --c-primary-hover: #5a80ff;
+  --c-primary-soft: #1a2a52;
+  --c-on-primary: #ffffff;
+  --c-link: #8fb0ff;
+
+  --c-accent: #fbbf3c;
+  --c-accent-hover: #ffcd5e;
+  --c-accent-soft: #3a2c0c;
+  --c-on-accent: #1a1300;
+
+  --c-success: #6ee7a1;
+  --c-success-soft: #0f3020;
+  --c-warning: #ffd37a;
+  --c-warning-soft: #3a2c0c;
+  --c-danger: #ff8a80;
+  --c-danger-soft: #3d1614;
+
+  --c-hero-from: #0f1b36;
+  --c-hero-to: #0b1220;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 35%);
+  --shadow-lg: 0 18px 48px rgb(0 0 0 / 45%);
+  color-scheme: dark;
+}
+
+:root {
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Noto Sans Kannada',
+    'Helvetica Neue', Arial, sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --header-h: 68px;
+  --container: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(64px, 9vw, 112px);
+  --focus-ring: 0 0 0 3px var(--c-bg), 0 0 0 6px var(--c-accent);
+  --transition: 180ms ease;
+}
+
+:root,
+:root[data-theme='light'] {
+  @include light-theme;
+}
+
+// No-JS fallback: follow the OS preference when no theme has been applied yet.
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark-theme;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-theme;
+}
