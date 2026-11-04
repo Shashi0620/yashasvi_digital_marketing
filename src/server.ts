@@ -6,6 +6,20 @@ import {
 } from '@angular/ssr/node';
 import express, { Request, Response } from 'express';
 import { join } from 'node:path';
+import { AngularAppEngine, createRequestHandler } from '@angular/ssr'
+import { getAllowedHosts, getContext, getTrustProxyHeaders } from '@netlify/angular-runtime/app-engine.js'
+
+const angularAppEngine = new AngularAppEngine({
+  allowedHosts: getAllowedHosts(),
+  trustProxyHeaders: getTrustProxyHeaders(),
+})
+
+export const reqHandler = createRequestHandler(async (req) => {
+  const { locals } = getContext()
+  const response = await angularAppEngine.handle(req, { locals })
+  return response || new Response('Not found', { status: 404 })
+})
+
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
