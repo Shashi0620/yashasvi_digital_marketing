@@ -4,7 +4,7 @@ export const environment: Environment = {
   production: true,
   siteUrl: 'https://www.yashasvidigital.in',
   contactForm: {
-    mode: 'demo',
-    endpoint: '/api/contact',
+    mode: 'netlify',
+    endpoint: '/forms/contact.html',
   },
 };

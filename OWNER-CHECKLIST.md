@@ -6,7 +6,7 @@ Most items are changed in **one file**: `src/app/core/config/site.config.ts`. Ot
 
 | # | Item | Where it goes | Status |
 | --- | --- | --- | --- |
-| 1 | Final registered domain (`yashasvidigital.in` or `yashasvidigitalsolutions.com`) | `environment.ts`, `environment.development.ts`, `public/robots.txt`, `public/sitemap.xml`, `angular.json` allowedHosts | ☐ |
+| 1 | Final registered domain (`yashasvidigital.in` or `yashasvidigitalsolutions.com`), connected in Netlify | `environment.ts`, `environment.development.ts`, `public/robots.txt`, `public/sitemap.xml`, `angular.json` allowedHosts, Netlify → Domain management | ☐ |
 | 2 | WhatsApp / phone number with country code | `site.config.ts` → `phone.e164` and `phone.display` | ☐ |
 | 3 | Which email is the primary public contact | `site.config.ts` → `email` | ☐ |
 | 4 | High-quality logo (SVG preferred; PNG 512×512 as well) | replace `public/images/logo.svg` and `public/favicon.svg`. The current logo is a placeholder | ☐ |
@@ -16,7 +16,7 @@ Most items are changed in **one file**: `src/app/core/config/site.config.ts`. Ot
 | 8 | Verified social media profile URLs | `site.config.ts` → `social` | ☐ |
 | 9 | Exact business address or confirmed service area | `site.config.ts` → `location.streetAddress` | ☐ |
 | 10 | Business hours (optional) | `site.config.ts` → `businessHours` | ☐ |
-| 11 | Contact-form destination (webhook / form service) | server env `CONTACT_WEBHOOK_URL`, then `contactForm.mode: 'live'` | ☐ |
+| 11 | Enable Netlify form detection and email notifications for the `contact` form | Netlify dashboard → Forms (see README) | ☐ |
 | 12 | Privacy policy review, retention details and the date | `content.en.ts` → `privacy`, then remove the draft notice | ☐ |
 | 13 | Confirm any claims such as "#1", "Top 3", client results or years of experience before adding them (none are published now) | `content.en.ts` | ☐ |
 | 14 | Team description (software engineers, Meta Ads specialists, content writers), if accurate | `content.en.ts` → `about.paragraphs` | ☐ |

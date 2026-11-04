@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Contact form (Netlify Forms definition)</title>
+</head>
+<body>
+  <!--
+    Netlify Forms detects forms in deployed HTML at build time. The real form is
+    rendered by Angular (src/app/sections/contact); this static copy only tells
+    Netlify which fields to accept. Keep the field names in sync with
+    ContactService. The site POSTs enquiries to this URL.
+  -->
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="website" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input type="text" name="name">
+    <input type="tel" name="phone">
+    <input type="text" name="businessType">
+    <input type="text" name="serviceNeeded">
+    <textarea name="message"></textarea>
+    <input type="text" name="consent">
+    <input type="text" name="website">
+  </form>
+</body>
+</html>

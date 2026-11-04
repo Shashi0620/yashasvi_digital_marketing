@@ -1,4 +1,4 @@
-export type ContactFormMode = 'demo' | 'live';
+export type ContactFormMode = 'demo' | 'netlify';
 
 export interface Environment {
   production: boolean;
@@ -10,9 +10,10 @@ export interface Environment {
   contactForm: {
     /**
      * `demo`: the form validates but does NOT send anything and says so clearly.
-     * `live`: the form POSTs to `endpoint` (see `src/server.ts` /api/contact).
+     * `netlify`: the form submits to Netlify Forms at `endpoint`.
      */
     mode: ContactFormMode;
+    /** Static page holding the Netlify form definition (`public/forms/contact.html`). */
     endpoint: string;
   };
 }

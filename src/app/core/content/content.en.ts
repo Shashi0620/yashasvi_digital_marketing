@@ -457,7 +457,7 @@ export const CONTENT_EN: SiteContent = {
       {
         heading: 'Storage and retention',
         paragraphs: [
-          '[OWNER: describe where enquiries are stored (for example, email inbox or form service) and how long they are kept.]',
+          'Enquiries submitted through the website form are stored securely by our hosting provider, Netlify (Netlify Forms), and forwarded to our business email. [OWNER: state how long enquiries are kept.]',
         ],
       },
       {

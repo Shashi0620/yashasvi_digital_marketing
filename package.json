@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:yashasvi-digital-solutions": "node dist/yashasvi-digital-solutions/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "packageManager": "npm@11.12.1",
@@ -20,7 +19,6 @@
     "@angular/platform-server": "^22.2.0",
     "@angular/router": "^22.2.0",
     "@angular/ssr": "^22.2.5",
-    "express": "^5.1.0",
     "lucide": "^1.68.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
@@ -30,11 +28,13 @@
     "@angular/cli": "^22.2.5",
     "@angular/compiler-cli": "^22.2.0",
     "@netlify/angular-runtime": "^4.0.0",
-    "@types/express": "^5.0.1",
     "@types/node": "^22.12.0",
     "jsdom": "^30.0.0",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0"
   }
 }

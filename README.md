@@ -10,15 +10,16 @@ Built with **Angular 22** (standalone components, signals, zoneless change detec
 
 ## Quick start
 
-Requirements: Node.js 20.19+ / 22.12+ / 24+ and npm.
+Requirements: Node.js ^22.22.3 or ^24.15.0, and npm.
 
 ```bash
 npm install
 npm start              # dev server at http://localhost:4200
 npm test -- --watch=false
 npm run build          # production build + prerendered HTML in dist/
-npm run serve:ssr:yashasvi-digital-solutions   # run the production server on :4000
 ```
+
+Hosting is on **Netlify** (see [Deploying to Netlify](#deploying-to-netlify)).
 
 ## Where to edit things
 
@@ -61,9 +62,10 @@ src/
     sections/                    hero, about, services, industries, portfolio, why-choose-us, contact
     pages/                       home, privacy-policy, not-found (lazy-loaded routes)
     shared/icon/                 tree-shaken Lucide icon component
-  server.ts                      Express SSR server + secure /api/contact endpoint
+  server.ts                      Netlify Edge Function entry (SSR for non-prerendered URLs)
   environments/                  environment config
-public/                          static assets, sitemap, robots, manifest
+public/                          static assets, sitemap, robots, manifest, forms/contact.html
+netlify.toml                     Netlify build, plugin and header settings
 ```
 
 ## Light / dark mode
@@ -76,37 +78,49 @@ public/                          static assets, sitemap, robots, manifest
 
 The form has validation, inline accessible errors, a duplicate-submit guard, a consent checkbox and a honeypot anti-spam field.
 
-**Demo mode (default).** `contactForm.mode: 'demo'` in `environment.ts`. The form validates but sends **nothing**. The page says so plainly and offers to send the same details on WhatsApp. It never shows a false "message sent".
+Submissions go to **Netlify Forms**, so no server code, API keys or webhook are needed:
 
-**Going live:**
+- `public/forms/contact.html` holds a hidden copy of the form. Netlify reads it at deploy time to learn the field names. If you add or rename a field, update this file and `ContactService` together.
+- The Angular form POSTs the enquiry to `/forms/contact.html` with `form-name=contact`.
+- Enquiries appear in the Netlify dashboard under **Forms → contact**. Netlify filters spam automatically, and the `website` field is a honeypot.
 
-1. Pick a destination that accepts a JSON POST, for example a Google Apps Script web app that writes to a Sheet and emails you, Formspree, Make/Zapier, or a CRM webhook.
-2. Set environment variables on the server (never in Angular code):
-   - `CONTACT_WEBHOOK_URL`: the destination URL
-   - `CONTACT_WEBHOOK_TOKEN` (optional): sent as `Authorization: Bearer …`
-3. Set `contactForm.mode: 'live'` in `src/environments/environment.ts` and rebuild.
+Modes (set in `src/environments/`):
 
-The `/api/contact` endpoint in `src/server.ts` checks every field again on the server, strips control characters, limits the body to 10 kB and allows 5 requests per IP every 10 minutes. It returns `503` when the webhook isn't configured, so visitors see an honest error. For high traffic or multiple server instances, replace the in-memory rate limiter with a shared store (Redis) or your platform's rate limiting, and consider adding a CAPTCHA such as Cloudflare Turnstile.
+- **`netlify`** (production build): sends to Netlify Forms. If form detection isn't enabled on Netlify, the visitor sees an honest error, never a false "message sent".
+- **`demo`** (local `npm start`): validates the form but sends nothing, and says so. Netlify Forms only exists on deployed sites.
 
-> If you host as a **static site** (no Node server), `/api/contact` won't exist. Point `contactForm.endpoint` at a third-party form service that accepts JSON instead.
+## Deploying to Netlify
 
-## Deployment
+The site runs on Netlify with **SSR**, using `@netlify/angular-runtime` (already in `devDependencies`):
 
-The build output (`dist/yashasvi-digital-solutions/`) contains:
+- The home and privacy pages are **prerendered** and served straight from Netlify's CDN.
+- Any other URL is rendered by `src/server.ts` as a Netlify **Edge Function**, so unknown pages return a real 404.
+- Build settings, Node version and security headers are in `netlify.toml`.
 
-- `browser/`: static assets plus **prerendered** `index.html` and `privacy-policy/index.html`
-- `server/server.mjs`: Node/Express server (SSR, 404 handling, `/api/contact`)
+### First deployment
 
-**Recommended: Node hosting** (Render, Railway, a VPS with PM2, Google Cloud Run, etc.)
+1. Push the code to GitHub.
+2. In Netlify, go to **Add new site → Import an existing project → GitHub** and choose this repository.
+3. Netlify reads `netlify.toml`, so leave the build settings as detected:
+   - Build command: `npm run build`
+   - Publish directory: `dist/yashasvi-digital-solutions/browser`
+4. Click **Deploy**. The site will be live at `https://<site-name>.netlify.app`.
+5. Turn on form handling: **Site configuration → Forms → Enable form detection**, then trigger a new deploy with **Deploys → Trigger deploy → Deploy site**. Netlify only detects forms during a deploy that runs after this setting is on.
+6. Get enquiries by email: **Forms → Form notifications → Add notification → Email notification**, then choose the `contact` form and your business email.
+7. Submit a test enquiry on the live site and confirm it shows up under **Forms**.
 
-```bash
-npm ci && npm run build
-PORT=4000 CONTACT_WEBHOOK_URL=https://... node dist/yashasvi-digital-solutions/server/server.mjs
-```
+After that, every push to `main` deploys automatically, and pull requests get preview URLs.
 
-Put it behind HTTPS. Most hosts provide this, or use Nginx/Caddy with Let's Encrypt. The allowed host names are listed in `angular.json` → `security.allowedHosts`. Add the final domain there if it differs.
+### Custom domain
 
-**Static hosting** (Netlify, Vercel static, Cloudflare Pages, Hostinger): upload `dist/yashasvi-digital-solutions/browser/`, rename `index.csr.html` → `404.html` (or set a 404 rewrite), and use an external form service (see above).
+1. In Netlify, go to **Domain management → Add a domain** and enter `www.yashasvidigital.in` (or the domain you choose).
+2. At your registrar (GoDaddy, Hostinger, etc.), either point the nameservers to Netlify DNS or add the DNS records Netlify shows you.
+3. HTTPS is issued automatically (Let's Encrypt). Turn on **Force HTTPS**.
+4. If the final domain differs from `www.yashasvidigital.in`, update `siteUrl` in `src/environments/`, plus `public/robots.txt` and `public/sitemap.xml`.
+
+### Local build warnings
+
+`npm run build` on your PC prints "Missing Netlify-specific environment variable …" warnings. These are expected: Netlify provides those variables during its own builds.
 
 ## SEO
 
