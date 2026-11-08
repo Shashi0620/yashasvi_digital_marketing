@@ -116,7 +116,7 @@ After that, every push to `main` deploys automatically, and pull requests get pr
 1. In Netlify, go to **Domain management → Add a domain** and enter `www.yashasvidigital.in` (or the domain you choose).
 2. At your registrar (GoDaddy, Hostinger, etc.), either point the nameservers to Netlify DNS or add the DNS records Netlify shows you.
 3. HTTPS is issued automatically (Let's Encrypt). Turn on **Force HTTPS**.
-4. If the final domain differs from `www.yashasvidigital.in`, update `siteUrl` in `src/environments/`, plus `public/robots.txt` and `public/sitemap.xml`.
+4. Once the domain loads over HTTPS, change `siteUrl` in `src/environments/` from `https://yashasvidigitalsolutions.netlify.app` to the new domain. Make the same change in `public/robots.txt` and `public/sitemap.xml`, and add the domain to `angular.json` → `security.allowedHosts`. Do this **only after** the domain works: the site currently tells Google the Netlify address is the real one, and pointing that at a domain that doesn't load stops Google from listing the site.
 
 ### Local build warnings
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- OWNER: update the domain if the final canonical domain differs. -->
+<!-- Must use the same origin as siteUrl in src/environments/environment.ts. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.yashasvidigital.in/</loc>
+    <loc>https://yashasvidigitalsolutions.netlify.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.yashasvidigital.in/privacy-policy</loc>
+    <loc>https://yashasvidigitalsolutions.netlify.app/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

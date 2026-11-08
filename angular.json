@@ -38,6 +38,7 @@
             "security": {
               "allowedHosts": [
                 "localhost",
+                "yashasvidigitalsolutions.netlify.app",
                 "www.yashasvidigital.in",
                 "yashasvidigital.in",
                 "www.yashasvidigitalsolutions.com",

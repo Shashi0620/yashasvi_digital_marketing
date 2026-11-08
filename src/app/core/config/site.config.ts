@@ -61,6 +61,11 @@ export interface SiteConfig {
    * native speaker. The language switcher is hidden while this is false.
    */
   enableKannada: boolean;
+  /**
+   * OWNER: the `content` value of the "HTML tag" verification method in Google
+   * Search Console (e.g. "AbC123..."). Leave empty until you have it.
+   */
+  googleSiteVerification: string;
 }
 
 export const SITE_CONFIG: SiteConfig = {
@@ -95,4 +100,5 @@ export const SITE_CONFIG: SiteConfig = {
   ogImagePath: '',
   hasTermsPage: false,
   enableKannada: false,
+  googleSiteVerification: '',
 };

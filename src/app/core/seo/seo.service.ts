@@ -50,6 +50,10 @@ export class SeoService {
     }
 
     this.setCanonical(page.index === false ? null : url);
+
+    if (SITE_CONFIG.googleSiteVerification) {
+      this.setName('google-site-verification', SITE_CONFIG.googleSiteVerification);
+    }
   }
 
   /** Adds or replaces a JSON-LD block identified by `id`. */

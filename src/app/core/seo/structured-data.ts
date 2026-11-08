@@ -26,6 +26,7 @@ export function buildHomeStructuredData(): object {
     '@type': 'Organization',
     '@id': `${siteUrl}#organization`,
     name: SITE_CONFIG.businessName,
+    alternateName: SITE_CONFIG.shortName,
     url: siteUrl,
     logo: `${environment.siteUrl}${SITE_CONFIG.logoPath}`,
     email: SITE_CONFIG.email.primary,
