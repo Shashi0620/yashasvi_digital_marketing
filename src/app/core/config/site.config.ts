@@ -100,5 +100,5 @@ export const SITE_CONFIG: SiteConfig = {
   ogImagePath: '',
   hasTermsPage: false,
   enableKannada: false,
-  googleSiteVerification: '',
+  googleSiteVerification: 'Hka0fEz5R1Q5MA8Pp-AIyibw2gAY4POhBs_YNXG1REs',
 };
